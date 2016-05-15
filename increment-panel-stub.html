@@ -1,0 +1,38 @@
+<link rel="import" href="../polymer/polymer.html">
+
+<link rel="import" href="../paper-button/paper-button.html" />
+<link rel="import" href="../rxjs-import/rxjs-import.html" />
+
+<dom-module id="increment-panel-stub">
+	<template>
+		<paper-button id="decrement">[[decrementLabel]]</paper-button><paper-button id="increment">[[incrementLabel]]</paper-button>
+	</template>
+	<script>
+		Polymer({
+			is: 'increment-panel-stub',
+			properties: {
+				decrementLabel: {
+					type: String,
+					value: "-"
+				},
+				incrementLabel: {
+					type: String,
+					value: "+"
+				}
+			},
+			ready: function () {
+				var self = this;
+
+				this.deltaSource = {
+					scan: function () {
+						return {
+							subscribe: function () {
+								self.elementStubbed = true;
+							}
+						}
+					}
+				};
+			}
+		});
+	</script>
+</dom-module>
